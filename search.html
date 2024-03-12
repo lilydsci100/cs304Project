@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <style>
+
+  </style>
+<body>
+  <input id = "search-input" placeholder="input">
+
+  <select id = "search-type">
+      <option value="uid">Userid</option>
+      <option value="pid">postid</option>
+
+  </select>
+
+  <br><br>
+  <div id="searchresult"> Show result here</div>
+  <button id="submit-btn">Submit</button>
+
+</body>
+
+<script>
+   $(document).ready(function(){
+    $("#submit-btn").click(function() {
+      var searchType = $("#search-type").val();
+      var input = $("#search-input").val();
+
+      if (searchType === 'uid'){
+        showresult(input, searchType);
+      } else if (searchType === 'pid') {
+        showresult(input, searchType)
+       
+      }
+   })
+  })
+
+  function showresult(input, searchType){
+    if (input != "") {
+      var url = searchType;
+      if (url === 'uid' && /^[0-9]*$/.test(input)) {
+        url = "demo_test.txt";
+      } else if (url === 'pid' && /\w/.test(input)){
+        url = "demo_test2.txt";
+      } else {
+        alert("Error");
+      }
+      
+      $.ajax({
+          url: url,
+        data: { input: input },
+        success: function(data){
+            $("#searchresult").html(data);
+          },
+          error: function(){
+            $("#searchresult").html("Error fetching data.");
+          }
+        });
+      } else {
+        $("#searchresult").css("display", "none");
+      }
+    }
+</script>
+</html>

@@ -1,0 +1,27 @@
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>John</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Alice</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Bob</td>
+      <td>22</td>
+    </tr>
+  </tbody>
+</table>
+
